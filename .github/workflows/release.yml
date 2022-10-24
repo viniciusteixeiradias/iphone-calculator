@@ -39,4 +39,3 @@ jobs:
             @semantic-release/git@9
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-         # S3_BUCKET: ${{ secrets.S3_BUCKET }}
