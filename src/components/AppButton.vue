@@ -3,17 +3,24 @@ import { StyleButton } from '../models/StyleButton'
 
 const props = defineProps<{
     symbol: string,
-    styleButton: StyleButton
+    styleButton: StyleButton,
+    isLarge?: boolean
 }>()
 
 const isDefault = props.styleButton === StyleButton.DEFAULT
 const isOther = props.styleButton === StyleButton.OTEHR
 const isOperation = props.styleButton === StyleButton.OPERATION
-
 </script>
 
 <template>
+    <div
+        v-if="isLarge"
+        class="app-button__large"
+    >
+        {{ props.symbol }}
+    </div>
     <div 
+        v-else
         class="app-button"
         :class="{ 
             'app-button__default': isDefault,
@@ -60,12 +67,33 @@ const isOperation = props.styleButton === StyleButton.OPERATION
     &__default:hover {
         background-color: darken($color: #ffffff, $amount: 50);
     }
+
     &__other:hover {
         background-color: darken($color: #ffffff, $amount: 10);
     }
+
     &__operation:hover {
         background-color: white;
         color: orange;
     }
+}
+
+
+.app-button__large {
+    display: flex;
+    align-items: center;
+    padding-left: 1.5rem;
+    height: 4rem;
+    width: calc(8.75rem - 1.5rem);
+    border-radius: 100px;
+    background-color: lighten($color: black, $amount: 30);
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+.app-button__large:hover {
+    background-color: darken($color: #ffffff, $amount: 50);
+
 }
 </style>
