@@ -1,6 +1,6 @@
 enum StyleButton {
-	DEFAULT = "DEFAULT",
-	OTEHR = "OTHER",
+	ACTION = "ACTION",
+	VALUE = "VALUE",
 	OPERATION = "OPERATION",
 }
 

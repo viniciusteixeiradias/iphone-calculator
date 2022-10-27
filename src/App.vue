@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import AppCalculator from './components/AppCalculator.vue'
+import HomeView from './view/HomeView.vue'
 </script>
 
 <template>
-  <AppCalculator />
+  <HomeView />
 </template>
