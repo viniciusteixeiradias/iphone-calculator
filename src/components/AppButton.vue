@@ -35,6 +35,7 @@ const handleClick = () => {
 <template>
   <div
     v-if="isLarge"
+    @click="handleClick"
     class="app-button__large"
   >
     {{ props.value }}
@@ -64,6 +65,7 @@ const handleClick = () => {
   border-radius: 50%;
   cursor: pointer;
   transition: all 0.4s ease-out;
+  user-select: none;
 
   &__action {
     background-color: darken($color: white, $amount: 30);
@@ -111,6 +113,7 @@ const handleClick = () => {
   color: white;
   font-size: 2rem;
   cursor: pointer;
+  user-select: none;
 }
 
 .app-button__large:hover {
