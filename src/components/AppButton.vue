@@ -5,6 +5,7 @@ const props = defineProps<{
   value: Symbol,
   styleButton: StyleButton,
   isLarge?: boolean
+  isActive?: boolean
 }>()
 const emits = defineEmits<{
   (e: 'value', val: number): void
@@ -47,7 +48,8 @@ const handleClick = () => {
     :class="{ 
       'app-button__action': isAction,
       'app-button__value': isValue,
-      'app-button__operation': isOperation
+      'app-button__operation': isOperation,
+      'app-button__operation--active': props.isActive
     }"
   >
     {{ props.value }}
@@ -85,6 +87,11 @@ const handleClick = () => {
     color: white;
     font-size: 2rem;
     font-weight: 700;
+
+    &--active {
+      background-color: white;
+      color: orange; 
+    }
   }
 
   &__action:hover {

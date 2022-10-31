@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { ref } from 'vue';
 import AppCalculator from '../components/AppCalculator.vue'
 import { Symbol } from '../models/StyleButton';
 import * as InsideMath from '../utils/calculations' 
+import { firstRowButtons, setActive } from '../utils/button-list'
 
 let n1 = $ref(0)
 let n2 = $ref(0)
@@ -26,7 +26,8 @@ const handleAction = (action: string) => {
   }
 }
 
-const handleOperation = (operation: string) => {
+const handleOperation = (operation: Symbol) => {
+  setActive(operation)
   if (!n2) {
     n2 = n1
     n1 = 0
@@ -34,17 +35,15 @@ const handleOperation = (operation: string) => {
 
   switch (operation) {
     case Symbol.EQUALS:
-      if (n1 && n2) {
-        n1 += n2
-      }
+      InsideMath.handleEquals($$(n1), n2)
   }
-
 }
 </script>
 
 <template>
   <AppCalculator 
     :model-value="n1"
+    :buttons-list="firstRowButtons"
     @value="handleValue"
     @action="handleAction"
     @operation="handleOperation"

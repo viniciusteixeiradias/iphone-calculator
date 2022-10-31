@@ -1,9 +1,10 @@
 <script setup lang="ts">
-import { firstRowButtons } from '../mock/button-list'
 import AppButton from './AppButton.vue'
+import type { RowButtons } from '../utils/button-list'
 
 const props = defineProps<{
-  modelValue: number
+  modelValue: number,
+  buttonsList: RowButtons[][]
 }>()
 </script>
 
@@ -11,12 +12,13 @@ const props = defineProps<{
   <span class="app-calculator__input">{{ props.modelValue }}</span>
   <div 
     class="app-calculator"
-    v-for="(_, index) in firstRowButtons" 
+    v-for="(_, index) in props.buttonsList" 
     :key="index"
   >
     <AppButton 
-      v-for="(button, indexBtn) in firstRowButtons[index]" 
+      v-for="(button, indexBtn) in props.buttonsList[index]" 
       :key="indexBtn"
+      :is-active="button.active"
       :is-large="button.isLarge"
       :style-button="button.type"
       :value="button.value"
